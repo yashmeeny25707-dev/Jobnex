@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jobnex — Remote Job Discovery</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+
+      <a class="nav-logo" href="#">
+        <span class="logo-dot"></span>
+        Jobnex
+      </a>
+
+      <div class="nav-search-wrap">
+        <svg class="nav-search-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input
+        id="navSearchInput"
+        type="text"
+        class="nav-search-input"
+        placeholder="Search jobs, companies…"
+        autocomplete="off"
+        oninput="searchJobs()"
+        />
+      </div>
+
+      <div class="nav-right">
+        <a href="#" class="nav-link">Explore</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="post-job.html" class="nav-cta">Post a Job</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+
+      <span class="hero-badge">
+        <span class="badge-dot"></span>
+        Live remote jobs · Updated in real-time
+      </span>
+
+      <h1 class="hero-title">
+        Discover Jobs<br/>
+        <span class="hero-title-accent">Made for You</span>
+      </h1>
+
+      <p class="hero-desc">
+        Browse thousands of remote opportunities across design, engineering, marketing, and more.
+      </p>
+
+      <div class="hero-search">
+        <div class="search-field">
+          <svg class="field-icon" viewBox="0 0 20 20" fill="none">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="searchInput"
+            type="text"
+            class="search-input"
+            placeholder="Job title, company, keyword…"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="search-divider"></div>
+
+        <div class="search-field search-field--select">
+          <svg class="field-icon" viewBox="0 0 20 20" fill="none">
+            <path d="M4 6h12M7 10h6M9 14h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <select id="categoryFilter" class="search-select">
+            <option value="">All Categories</option>
+            <option value="software-dev">Software Dev</option>
+            <option value="marketing">Marketing</option>
+            <option value="design">Design</option>
+            <option value="customer-support">Customer Support</option>
+            <option value="sales">Sales</option>
+            <option value="product">Product</option>
+            <option value="data">Data</option>
+            <option value="devops">DevOps / Sysadmin</option>
+            <option value="finance">Finance / Legal</option>
+            <option value="writing">Writing</option>
+            <option value="qa">QA</option>
+            <option value="hr">HR</option>
+          </select>
+        </div>
+
+        <button class="search-btn" id="searchBtn">
+          Search Jobs
+        </button>
+      </div>
+
+      <div class="quick-filters">
+        <span class="qf-label">Popular :</span>
+        <button class="qf-pill" data-cat="software-dev">Engineering</button>
+        <button class="qf-pill" data-cat="design">Design</button>
+        <button class="qf-pill" data-cat="marketing">Marketing</button>
+        <button class="qf-pill" data-cat="data">Data</button>
+        <button class="qf-pill" data-cat="product">Product</button>
+      </div>
+
+    </div>
+  </section>
+
+  <main class="main-content">
+    <div class="main-inner">
+
+      <div class="results-header" id="resultsHeader">
+        <div class="results-left">
+          <h2 class="results-title">Latest Openings</h2>
+          <span class="results-count" id="jobCount"></span>
+        </div>
+        <span class="results-note">Sorted by newest</span>
+      </div>
+
+      <div class="loading-state" id="loadingState">
+        <div class="skeleton-grid">
+          <div class="skeleton-card"><div class="sk-logo"></div><div class="sk-line sk-line--lg"></div><div class="sk-line sk-line--md"></div><div class="sk-tags"><div class="sk-tag"></div><div class="sk-tag"></div></div></div>
+          <div class="skeleton-card"><div class="sk-logo"></div><div class="sk-line sk-line--lg"></div><div class="sk-line sk-line--md"></div><div class="sk-tags"><div class="sk-tag"></div><div class="sk-tag"></div></div></div>
+          <div class="skeleton-card"><div class="sk-logo"></div><div class="sk-line sk-line--lg"></div><div class="sk-line sk-line--md"></div><div class="sk-tags"><div class="sk-tag"></div><div class="sk-tag"></div></div></div>
+          <div class="skeleton-card"><div class="sk-logo"></div><div class="sk-line sk-line--lg"></div><div class="sk-line sk-line--md"></div><div class="sk-tags"><div class="sk-tag"></div><div class="sk-tag"></div></div></div>
+          <div class="skeleton-card"><div class="sk-logo"></div><div class="sk-line sk-line--lg"></div><div class="sk-line sk-line--md"></div><div class="sk-tags"><div class="sk-tag"></div><div class="sk-tag"></div></div></div>
+          <div class="skeleton-card"><div class="sk-logo"></div><div class="sk-line sk-line--lg"></div><div class="sk-line sk-line--md"></div><div class="sk-tags"><div class="sk-tag"></div><div class="sk-tag"></div></div></div>
+        </div>
+      </div>
+
+      <div class="error-state hidden" id="errorState">
+        <div class="state-icon state-icon--error">✕</div>
+        <h3>Failed to load jobs</h3>
+        <p id="errorMessage">Please check your connection and try again.</p>
+        <button class="retry-btn" id="retryBtn">Try Again</button>
+      </div>
+
+      <div class="empty-state hidden" id="emptyState">
+        <div class="state-icon">⊘</div>
+        <h3>No jobs found</h3>
+        <p>Try different keywords or browse all categories.</p>
+      </div>
+
+      <div class="jobs-grid" id="jobsGrid"></div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Jobnex</span>
+      <p>Powered by <a href="https://remotive.com" target="_blank">Remotive API</a></p>
+      <p class="footer-copy">© 2025 Jobnex. College Project.</p>
+    </div>
+  </footer>
+
+   <script type="module" src="js/main.js"></script>
+</body>
+</html>
+
+

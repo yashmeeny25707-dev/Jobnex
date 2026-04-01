@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Companies — Jobnex</title>
+  <link rel="stylesheet" href="css/companies.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <span class="logo-dot"></span>
+        Jobnex
+      </a>
+      <div class="nav-search-wrap">
+        <svg class="nav-search-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input type="text" class="nav-search-input" placeholder="Search companies…" autocomplete="off"/>
+      </div>
+      <div class="nav-right">
+        <a href="index.html" class="nav-link">Explore</a>
+        <a href="companies.html" class="nav-link active">Companies</a>
+        <a href="post-job.html" class="nav-cta">Post a Job</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-banner">
+    <div class="hero-banner-inner">
+      <div class="hero-text">
+        <span class="hero-badge">
+          <span class="badge-dot"></span>
+          500+ Companies Hiring Now
+        </span>
+        <h1 class="hero-title">Find Your Dream<br/><span class="accent">Company</span></h1>
+        <p class="hero-desc">Discover top companies actively hiring remote talent across the globe.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="stat-num">2.4k</span><span class="stat-lbl">Active Jobs</span></div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat"><span class="stat-num">500+</span><span class="stat-lbl">Companies</span></div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat"><span class="stat-num">120+</span><span class="stat-lbl">Categories</span></div>
+        </div>
+      </div>
+      <div class="hero-search-wrap">
+        <div class="hero-search">
+          <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="companySearch" placeholder="Search companies, industries…" autocomplete="off"/>
+        </div>
+        <button class="search-btn" onclick="filterCompanies()">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-content">
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Categories</h2>
+        <a href="#" class="see-all">See All →</a>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card" onclick="filterByCategory('engineering',event)">
+          <div class="cat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="cat-name">Engineering</span>
+          <span class="cat-count">840 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('design',event)">
+          <div class="cat-icon pink">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="cat-name">Design</span>
+          <span class="cat-count">320 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('marketing',event)">
+          <div class="cat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="cat-name">Marketing</span>
+          <span class="cat-count">215 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('hr',event)">
+          <div class="cat-icon pink">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <span class="cat-name">HR Jobs</span>
+          <span class="cat-count">180 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('data',event)">
+          <div class="cat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <span class="cat-name">Data Science</span>
+          <span class="cat-count">290 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('product',event)">
+          <div class="cat-icon pink">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="cat-name">Product</span>
+          <span class="cat-count">175 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('sales',event)">
+          <div class="cat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="cat-name">Sales</span>
+          <span class="cat-count">230 jobs</span>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('writing',event)">
+          <div class="cat-icon pink">
+            <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
+              <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="cat-name">Writing</span>
+          <span class="cat-count">140 jobs</span>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Recruiters in Top Companies</h2>
+        <a href="#" class="see-all">See All →</a>
+      </div>
+      <div class="recruiters-grid" id="recruitersGrid">
+
+        <div class="recruiter-card" data-category="engineering">
+          <div class="recruiter-badge">48 Active Recruiters</div>
+          <div class="company-logo-wrap blue-bg">
+            <svg viewBox="0 0 60 30" fill="none" width="60" height="30">
+              <text x="0" y="24" font-size="22" font-weight="800" fill="#1877F2" font-family="Poppins,sans-serif">f</text>
+              <text x="16" y="24" font-size="15" font-weight="700" fill="#1877F2" font-family="Poppins,sans-serif">acebook</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Facebook</h3>
+          <p class="company-location">Singapore</p>
+          <button class="view-btn" onclick="viewCompany('Facebook')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="engineering">
+          <div class="recruiter-badge">32 Active Recruiters</div>
+          <div class="company-logo-wrap">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#00A8E0" font-family="Poppins,sans-serif">AT&amp;T</text>
+            </svg>
+          </div>
+          <h3 class="company-name">AT&T</h3>
+          <p class="company-location">United States</p>
+          <button class="view-btn" onclick="viewCompany('AT&T')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="design">
+          <div class="recruiter-badge">22 Active Recruiters</div>
+          <div class="company-logo-wrap pink-bg">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#FF5A5F" font-family="Poppins,sans-serif">airbnb</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Airbnb</h3>
+          <p class="company-location">Worldwide</p>
+          <button class="view-btn" onclick="viewCompany('Airbnb')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="engineering">
+          <div class="recruiter-badge">65 Active Recruiters</div>
+          <div class="company-logo-wrap blue-bg">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#4285F4" font-family="Poppins,sans-serif">Google</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Google</h3>
+          <p class="company-location">Worldwide</p>
+          <button class="view-btn" onclick="viewCompany('Google')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="engineering">
+          <div class="recruiter-badge">41 Active Recruiters</div>
+          <div class="company-logo-wrap">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#000000" font-family="Poppins,sans-serif">Stripe</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Stripe</h3>
+          <p class="company-location">Remote First</p>
+          <button class="view-btn" onclick="viewCompany('Stripe')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="product">
+          <div class="recruiter-badge">19 Active Recruiters</div>
+          <div class="company-logo-wrap pink-bg">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#000000" font-family="Poppins,sans-serif">Notion</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Notion</h3>
+          <p class="company-location">Remote First</p>
+          <button class="view-btn" onclick="viewCompany('Notion')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="engineering">
+          <div class="recruiter-badge">27 Active Recruiters</div>
+          <div class="company-logo-wrap blue-bg">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#0070F3" font-family="Poppins,sans-serif">Vercel</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Vercel</h3>
+          <p class="company-location">Worldwide</p>
+          <button class="view-btn" onclick="viewCompany('Vercel')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="design">
+          <div class="recruiter-badge">15 Active Recruiters</div>
+          <div class="company-logo-wrap pink-bg">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="18" font-weight="800" fill="#F24E1E" font-family="Poppins,sans-serif">Figma</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Figma</h3>
+          <p class="company-location">Remote First</p>
+          <button class="view-btn" onclick="viewCompany('Figma')">View Jobs</button>
+        </div>
+
+        <div class="recruiter-card" data-category="marketing">
+          <div class="recruiter-badge">33 Active Recruiters</div>
+          <div class="company-logo-wrap blue-bg">
+            <svg viewBox="0 0 80 30" fill="none" width="80" height="30">
+              <text x="0" y="24" font-size="15" font-weight="800" fill="#36C5F0" font-family="Poppins,sans-serif">Slack</text>
+            </svg>
+          </div>
+          <h3 class="company-name">Slack</h3>
+          <p class="company-location">United States</p>
+          <button class="view-btn" onclick="viewCompany('Slack')">View Jobs</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Jobs For You</h2>
+        <a href="index.html" class="see-all">See All →</a>
+      </div>
+      <p class="section-sub">Listing based on top companies and popular categories</p>
+
+      <div class="jobs-list" id="jobsList">
+
+        <div class="job-row">
+          <div class="job-row-logo blue-bg-sm">G</div>
+          <div class="job-row-info">
+            <h3 class="job-row-title">Senior Frontend Engineer</h3>
+            <p class="job-row-company">Google · Remote · Full Time</p>
+          </div>
+          <div class="job-row-right">
+            <span class="new-badge">36 NEW</span>
+            <button class="notify-btn active">🔔</button>
+          </div>
+        </div>
+
+        <div class="job-row">
+          <div class="job-row-logo pink-bg-sm">F</div>
+          <div class="job-row-info">
+            <h3 class="job-row-title">UI/UX Designer</h3>
+            <p class="job-row-company">Figma · Worldwide · Contract</p>
+          </div>
+          <div class="job-row-right">
+            <span class="new-badge">22 NEW</span>
+            <button class="notify-btn">🔔</button>
+          </div>
+        </div>
+
+        <div class="job-row">
+          <div class="job-row-logo blue-bg-sm">S</div>
+          <div class="job-row-info">
+            <h3 class="job-row-title">Full Stack Developer</h3>
+            <p class="job-row-company">Stripe · Remote First · Full Time</p>
+          </div>
+          <div class="job-row-right">
+            <span class="new-badge">46 NEW</span>
+            <button class="notify-btn active">🔔</button>
+          </div>
+        </div>
+
+        <div class="job-row">
+          <div class="job-row-logo pink-bg-sm">N</div>
+          <div class="job-row-info">
+            <h3 class="job-row-title">Product Manager</h3>
+            <p class="job-row-company">Notion · Remote · Full Time</p>
+          </div>
+          <div class="job-row-right">
+            <span class="new-badge">18 NEW</span>
+            <button class="notify-btn">🔔</button>
+          </div>
+        </div>
+
+        <div class="job-row">
+          <div class="job-row-logo blue-bg-sm">V</div>
+          <div class="job-row-info">
+            <h3 class="job-row-title">DevOps Engineer</h3>
+            <p class="job-row-company">Vercel · Worldwide · Full Time</p>
+          </div>
+          <div class="job-row-right">
+            <span class="new-badge">12 NEW</span>
+            <button class="notify-btn">🔔</button>
+          </div>
+        </div>
+
+        <div class="job-row">
+          <div class="job-row-logo pink-bg-sm">A</div>
+          <div class="job-row-info">
+            <h3 class="job-row-title">Growth Marketing Lead</h3>
+            <p class="job-row-company">Airbnb · Europe · Contract</p>
+          </div>
+          <div class="job-row-right">
+            <span class="new-badge">9 NEW</span>
+            <button class="notify-btn">🔔</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Jobnex</span>
+      <p>Powered by <a href="https://remotive.com" target="_blank">Remotive API</a></p>
+      <p class="footer-copy">© 2025 Jobnex. College Project.</p>
+    </div>
+  </footer>
+
+  <script src="js/companies.js"></script>
+
+</body>
+</html>
