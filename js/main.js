@@ -42,20 +42,65 @@ async function loadJobs() {
 
 //Search & filter Jobs
 window.searchJobs = function () {
-  const keyword = document.getElementById("navSearchInput").value;
-  const category = document.getElementById("categoryFilter")?.value || "";
+  const keyword =
+    document.getElementById("searchInput")?.value ||
+    document.getElementById("navSearchInput")?.value ||
+    "";
 
-  const filtered = filterJobs(allJobs, keyword, category);
+  const category = document.getElementById("categoryFilter")?.value || "";
+  const sortOption = document.getElementById("sortOption")?.value || "newest";
+
+  const filtered = filterJobs(allJobs, keyword, category, sortOption);
+
+  hideEmpty();
 
   if (filtered.length === 0) {
+    document.getElementById("jobsGrid").innerHTML = "";
     showEmpty();
   } else {
-    hideEmpty();
     renderJobs(filtered);
   }
 };
 
+//SEARCH ON ENTRY KEY PRESS
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("retryBtn")?.addEventListener("click", loadJobs);
+  document.getElementById("navSearchInput")?.addEventListener("input", searchJobs);
+  document.getElementById("searchBtn")?.addEventListener("click", searchJobs);
+  document.getElementById("categoryFilter")?.addEventListener("change", searchJobs);
+  document.getElementById("searchInput")?.addEventListener("input", searchJobs);
 
-document.getElementById("retryBtn").addEventListener("click", loadJobs);
+  document.querySelectorAll(".qf-pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const category = btn.dataset.cat;
 
-loadJobs();
+      const dropdown = document.getElementById("categoryFilter");
+      if (dropdown) dropdown.value = category;
+
+      // STYLE OF ACTIVE PILL
+      document.querySelectorAll(".qf-pill").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      searchJobs();
+    });
+  });
+
+  loadJobs();
+
+  const toggle = document.getElementById("themeSwitch");
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    if (toggle) toggle.checked = true;
+  }
+
+  toggle?.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+});

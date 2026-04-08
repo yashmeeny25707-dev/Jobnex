@@ -774,3 +774,283 @@ a { color: inherit; text-decoration: none; }
   .card-footer { flex-direction: column; align-items: flex-start; }
   .apply-btn   { width: 100%; text-align: center; }
 }
+
+
+/*Sort dropdown -------------------------------------*/
+.results-note {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+body.dark .results-note {
+  background: #1e1e1e;
+  color: white;
+  border: 1px solid #444;
+}
+
+
+/*Theme toggle -------------------------------------*/
+.theme-toggle {
+position: relative;
+width: 65px;
+height: 32px;
+}
+
+.theme-toggle input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+background-color: #f69abb;
+border-radius: 50px;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+transition: 0.3s;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 6px;
+font-size: 14px;
+}
+
+.slider::before {
+content: "";
+position: absolute;
+height: 26px;
+width: 26px;
+left: 3px;
+top: 3px;
+background-color: white;
+border-radius: 50%;
+transition: 0.3s;
+z-index: 2;
+}
+
+.icon {
+z-index: 1;
+pointer-events: none;
+}
+
+.sun {
+color: #fff;
+}
+
+.moon {
+color: #000;
+}
+
+input:checked + .slider {
+background-color: #090909;
+box-shadow: 0 0 10px rgba(233, 227, 227, 0.5);
+}
+
+input:checked + .slider::before {
+transform: translateX(32px);
+background-color: white;
+}
+
+
+/* DARK MODE STYLES ----------------------------------------*/
+
+body.dark {
+background: #0f0f0f;
+color: #ffffff;
+}
+
+body.dark .navbar {
+background: #1a1a1a;
+border-bottom: 1px solid #2a2a2a;
+}
+
+body.dark .nav-logo {
+color: #ffffff;
+}
+
+body.dark .nav-link {
+color: #cccccc;
+}
+body.dark .nav-link:hover {
+color: #ffffff;
+background: #090909;
+box-shadow: 0 0 10px rgba(127, 118, 118, 0.5);
+}
+body.dark .nav-search-input::placeholder {
+  color: #010101;
+  opacity: 0.7;
+}
+
+body.dark .nav-search-input {
+background: #fdfbfb;
+color: #090909;
+border: 1px solid #f3eeee;
+}
+body.dark .nav-search-input.hover{
+  border: 10px solid #f3eeee;
+  box-shadow: 0 0 10px rgba(127, 118, 118, 0.5);
+}
+body.dark .nav-cta{
+  box-shadow: 0 0 10px rgba(127, 118, 118, 0.5);
+}
+
+body.dark .hero {
+background: #121212;
+}
+
+body.dark .hero-title {
+color: #ffffff;
+}
+
+body.dark .hero-desc {
+color: #aaaaaa;
+}
+body.dark .search-input::placeholder {
+  color: #090808;
+  opacity: 0.7;
+}
+body.dark .search-input,
+body.dark .search-select {
+color: #050404;
+}
+body.dark .search-btn {
+background: #fb77a8;
+color: #ffffff;
+}
+body.dark .search-btn:hover {
+background: #f26192;
+}
+body.dark .job-card {
+background: #1e1e1e;
+border: 1px solid #2a2a2a;
+}
+
+body.dark .job-title {
+color: #ffffff;
+}
+
+body.dark .company-name {
+color: #bbbbbb;
+}
+
+body.dark .tag {
+background: #2a2a2a;
+color: #dddddd;
+}
+
+body.dark .card-footer {
+border-top: 1px solid #2a2a2a;
+}
+
+body.dark .posted-date {
+color: #999;
+}
+
+body.dark .apply-btn {
+background: #ee6a96;
+color: #ffffff;
+}
+
+body.dark .apply-btn:hover {
+background: #ee6a96;
+}
+
+body.dark .site-footer {
+background: #1a1a1a;
+border-top: 1px solid #2a2a2a;
+}
+
+body.dark .footer-logo {
+color: #ffffff;
+}
+
+body.dark .site-footer p {
+color: #aaaaaa;
+}
+
+body.dark .site-footer a {
+color: #dddddd;
+}
+
+
+
+/* GLOBAL RESPONSIVE -------------------------------------*/
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.container,
+.nav-inner,
+.main-inner,
+.hero-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+  font-size: 1rem;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+
+
+/*RESPONSIVE TYPOGRAPHY--------------------------*/
+h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 2rem); }
+p {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+.section {
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+}
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+
+
+/* Tablet-------------------------------------- */
+@media (min-width: 48em) {
+  .container,
+  .nav-inner,
+  .main-inner {
+    padding: 0 1.5rem;
+  }
+}
+
+
+
+/* Desktop-------------------------------------- */
+@media (min-width: 64em) {
+  .container,
+  .nav-inner,
+  .main-inner {
+    padding: 0 2rem;
+  }
+}

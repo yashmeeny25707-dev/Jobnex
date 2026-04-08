@@ -36,7 +36,13 @@
 
       <div class="nav-right">
         <a href="#" class="nav-link">Explore</a>
-        <a href="companies.html" class="nav-link">Companies</a>
+        <label class="theme-toggle">
+          <input type="checkbox" id="themeSwitch">
+          <span class="slider">
+            <span class="icon sun">  ⏾</span>
+            <span class="icon moon">☀︎  </span>
+          </span>
+        </label>
         <a href="post-job.html" class="nav-cta">Post a Job</a>
       </div>
 
@@ -123,7 +129,10 @@
           <h2 class="results-title">Latest Openings</h2>
           <span class="results-count" id="jobCount"></span>
         </div>
-        <span class="results-note">Sorted by newest</span>
+        <select id="sortOption" class="results-note" onchange="searchJobs()">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+        </select>
       </div>
 
       <div class="loading-state" id="loadingState">
@@ -166,5 +175,3 @@
    <script type="module" src="js/main.js"></script>
 </body>
 </html>
-
-

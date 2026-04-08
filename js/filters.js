@@ -1,12 +1,29 @@
-export function filterJobs(jobs, keyword, category) {
-  return jobs.filter(job => {
-    const matchKeyword =
-      job.title.toLowerCase().includes(keyword.toLowerCase()) ||
-      job.company_name.toLowerCase().includes(keyword.toLowerCase());
+export function filterJobs(jobs, keyword, category, sortOption = "newest") {
 
-    const matchCategory =
-      !category || job.category.toLowerCase().includes(category);
+  let result = jobs
+    .filter(job => {
+      const key = keyword.toLowerCase();
 
-    return matchKeyword && matchCategory;
-  });
+      return (
+        job.title.toLowerCase().includes(key) ||
+        job.company_name.toLowerCase().includes(key)
+      );
+    })
+    .filter(job => {
+      if (!category) return true;
+      return job.category.toLowerCase().includes(category.toLowerCase());
+    });
+
+  if (sortOption === "newest") {
+    result = result.sort(
+      (a, b) => new Date(b.publication_date) - new Date(a.publication_date)
+    );
+  } 
+  else if (sortOption === "oldest") {
+    result = result.sort(
+      (a, b) => new Date(a.publication_date) - new Date(b.publication_date)
+    );
+  }
+
+  return result;
 }
