@@ -96,20 +96,18 @@ No additional setup required.
 ## Project Structure
 
 Jobnex/
- ├── index.html
- ├── post-job.html
- ├── companies.html
- ├── css/
- │    ├── style.css
- │    ├── post-job.css
- │    └── companies.css
- ├── js/
- │    ├── main.js
- │    ├── api.js
- │    ├── ui.js
- │    ├── filters.js
- │    ├── companies.js
- │    └── post-job.js
+├── index.html
+├── post-job.html
+├── css/
+│   ├── style.css
+│   └── post-job.css
+├── js/
+│   ├── api.js
+│   ├── filters.js
+│   ├── main.js
+│   ├── post-job.js
+│   └── ui.js
+├── README.md
 
 ---
 
